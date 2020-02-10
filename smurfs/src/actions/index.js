@@ -4,6 +4,10 @@ export const GET_SMURFS = 'GET_SMURFS';
 export const LOAD_SMURFS = 'LOAD_SMURFS';
 export const NO_SMURFS_ERROR = 'NO_SMURFS_ERROR';
 
+export const ADD_SMURF = 'ADD_SMURF';
+export const SMURF_ADDED_SUCCESS = 'SMURF_ADDED_SUCCESS';
+export const SMURF_ADD_ERROR = 'SMURF_ADD_ERROR';
+
 
 export const getSmurfs = () => dispatch => {
     dispatch({ type: GET_SMURFS });
@@ -22,23 +26,19 @@ export const getSmurfs = () => dispatch => {
     }, 2000)
 }
 
+export const addSmurf = smurf => dispatch => {
+    dispatch({ type: ADD_SMURF });
 
-
-
-// export const getJobs = () => dispatch => {
-//     dispatch({ type: GET_JOBS });
-
-//     setTimeout(() => {
-//         axios
-//             .get(`https://jobs.github.com/positions.json?search=python`)
-//             .then(res => {
-//                 console.log(res.data);
-//                 dispatch({ type: LOAD_JOBS, payload: res.data });
-//             })
-//             .catch(err => {
-//                 console.log(err);
-//                 dispatch({ type: SHOW_ERROR, payload: "damn API is not working" });
-//             });
-//     }, 1000);
-// };
-
+    setTimeout(() => {
+        axios
+            .post(`http://localhost:3333/smurfs`, smurf)
+            .then(res => {
+                console.log(res);
+                dispatch({ type: SMURF_ADDED_SUCCESS, payload: res.data })
+            })
+            .catch(err => {
+                console.log(err);
+                dispatch({ type: SMURF_ADD_ERROR, payload: "couldn't add your smurf" })
+            })
+    }, 1000)
+}

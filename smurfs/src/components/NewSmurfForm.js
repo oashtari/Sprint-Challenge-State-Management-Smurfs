@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { connect } from 'react-redux';
 
-import { getSmurfs } from '../actions';
+import { getSmurfs, addSmurf } from '../actions';
 
 // import { Button, Input, FormGroup, Label, Col } from "reactstrap";
 
@@ -11,13 +11,15 @@ const NewSmurfForm = props => {
     const [form, setForm] = useState({ name: '', age: '', height: '' });
 
     const handleChange = e => {
-        // setForm({ ...form, [event.target.name]: event.target.value });
+
+        setForm({ ...form, [e.target.name]: e.target.value });
     }
+    console.log('this is what is changing', form)
 
     const handleSubmit = e => {
-        // e.preventDefault();
-        // props.addSmurf(form);
-        // setForm({ name: '', age: '', height: '' });
+        e.preventDefault();
+        props.addSmurf(form);
+        setForm({ name: '', age: '', height: '' });
     }
 
 
@@ -57,7 +59,7 @@ const mapStateToProps = state => {
 
 export default connect(
     mapStateToProps,
-    { getSmurfs }
+    { getSmurfs, addSmurf }
 )(NewSmurfForm)
 
 

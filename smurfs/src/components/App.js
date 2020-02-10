@@ -12,9 +12,7 @@ import { smurfReducer as reducer } from '../reducers';
 import NewSmurfForm from './NewSmurfForm';
 import SmurfList from "./SmurfList";
 
-
 const store = createStore(reducer, applyMiddleware(thunk, logger));
-
 
 class App extends Component {
   render() {
@@ -22,9 +20,7 @@ class App extends Component {
       <div className="App">
         <Provider store={store}>
           <SmurfList />
-
           <NewSmurfForm />
-
         </Provider>
       </div>
     );

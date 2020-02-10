@@ -2,7 +2,7 @@ import React from 'react';
 
 import { connect } from 'react-redux';
 
-import { getSmurfs } from '../actions';
+import { getSmurfs, addSmurf } from '../actions';
 
 
 const smurfsList = props => {
@@ -34,7 +34,7 @@ const mapStateToProps = state => {
 
 export default connect(
     mapStateToProps,
-    { getSmurfs }
+    { getSmurfs, addSmurf }
 )(smurfsList)
 
 

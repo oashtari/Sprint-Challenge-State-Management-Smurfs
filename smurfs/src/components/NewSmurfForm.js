@@ -29,7 +29,7 @@ const NewSmurfForm = props => {
     return (
         <>
             {props.isFetchingSmurfs ? (
-                <h2>let's see those SV episodes</h2>
+                <h2>Let's see some smurfs</h2>
             ) : (
                     <button color="primary" onClick={getDemSmurfs}>Fetch those Smurfs</button>
                 )}

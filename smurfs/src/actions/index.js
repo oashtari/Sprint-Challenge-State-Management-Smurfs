@@ -13,13 +13,13 @@ export const getSmurfs = () => dispatch => {
             .get(`http://localhost:3333/smurfs`)
             .then(res => {
                 console.log(res);
-                // dispatch({ type: LOAD_SMURFS, payload: res.data._embedded.episodes })
+                dispatch({ type: LOAD_SMURFS, payload: res.data })
             })
             .catch(err => {
                 console.log(err);
                 dispatch({ type: NO_SMURFS_ERROR, payload: "no smurfs for you" })
             })
-    }, 500)
+    }, 2000)
 }
 
 

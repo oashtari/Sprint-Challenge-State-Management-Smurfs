@@ -9,25 +9,26 @@ const smurfsList = props => {
 
     return (
         <>
-            <h2>SMURFS GO HERE</h2>
-
-            {/* {props.error ? (
+            <h2>SMURFS GO HERE:</h2>
+            {props.error ? (
                 <div className="error">{props.error}</div>
             ) : (
-                    props.siliconValley.map(episode => (
+                    props.smurfs.map(smurf => (
                         <>
-                            <div>{episode.name}</div>
-                            <div>{episode.airdate}</div>
+                            <div>{smurf.name}</div>
+                            <div>{smurf.age}</div>
+                            <div>{smurf.height}</div>
                         </>
                     ))
-                )} */}
+                )}
         </>
     )
 }
 
 const mapStateToProps = state => {
     return {
-        smurfs: state.smurfs
+        smurfs: state.smurfs,
+        error: state.error
     }
 }
 
